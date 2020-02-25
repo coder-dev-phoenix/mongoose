@@ -22,43 +22,51 @@ const testModel = mongoose.model("testStore", testSchema);
 
 const testValue = new testModel({
 	name: "hassan",
-	age: 121,
+	age: 31,
 	education: "BSCS"
 });
 
+testValue.save();
 
-testModel.deleteOne({ _id: "5e54f06e21d0f71e64aa6780" },function(err){
-    if(err){
-        console.log(err);
-    } else{
-        console.log("Successfully deleted");
-    }
-});
-
-
-// testModel.updateOne({ _id: "5e54f1a42ab4fd1e6c843353" },{name:"uzair"},function(err){
+// testModel.deleteOne({ _id: "5e54f06e21d0f71e64aa6780" },function(err){
 //     if(err){
 //         console.log(err);
 //     } else{
-//         console.log("Successfully updated change")
+//         console.log("Successfully deleted");
 //     }
 // });
 
+
+
+const personSchema = new mongoose.Schema({
+	name: String,
+	age: Number,
+	family_relationship: testSchema
+});
+
+const personModel = mongoose.model("personstore", personSchema);
+
+const personValue = new personModel({
+	name: "Anna",
+	age: 27,
+	family_relationship: testValue
+});
+
+
+
+
+personModel.updateOne({ _id: "5e54f78039a779292892f00e" },{family_relationship: testValue},function(err){
+    if(err){
+        console.log(err);
+    } else{
+        console.log("Successfully updated change")
+    }
+});
+
 // testValue.save();
-
-// const personSchema = new mongoose.Schema({
-// 	name: String,
-// 	age: Number
-// });
-
-// const personModel = mongoose.model("personstore", personSchema);
-
-// const personValue = new personModel({
-// 	name: "John",
-// 	age: 37
-// });
-
 // personValue.save();
+
+
 
 // const testValue01 = new testModel({
 // 	name: "ammad",
