@@ -26,7 +26,25 @@ const testValue = new testModel({
 	education: "BSCS"
 });
 
-testValue.save();
+
+testModel.deleteOne({ _id: "5e54f06e21d0f71e64aa6780" },function(err){
+    if(err){
+        console.log(err);
+    } else{
+        console.log("Successfully deleted");
+    }
+});
+
+
+// testModel.updateOne({ _id: "5e54f1a42ab4fd1e6c843353" },{name:"uzair"},function(err){
+//     if(err){
+//         console.log(err);
+//     } else{
+//         console.log("Successfully updated change")
+//     }
+// });
+
+// testValue.save();
 
 // const personSchema = new mongoose.Schema({
 // 	name: String,
